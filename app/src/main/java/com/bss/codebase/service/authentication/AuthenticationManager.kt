@@ -21,4 +21,6 @@ interface AuthenticationManager<TUser : LoginResponse, TLoginRequest : LoginRequ
     fun loginSocial(loginSocialRequest: TLoginSocialRequest): Observable<TUser>
 
     fun logout(): Observable<String>
+
+    fun configure(): AuthenticationManagerConfiguration
 }
