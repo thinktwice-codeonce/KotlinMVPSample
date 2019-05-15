@@ -1,4 +1,4 @@
-package com.bss.codebase.service.filter
+package com.bss.codebase.service.network.filter
 
 import com.bss.codebase.service.authentication.model.LoginRequest
 import com.bss.codebase.service.authentication.model.LoginResponse

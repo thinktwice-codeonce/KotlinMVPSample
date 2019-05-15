@@ -1,4 +1,4 @@
-package com.bss.codebase.service.filter
+package com.bss.codebase.service.network.filter
 
 import rx.Observable
 import java.util.ArrayList
