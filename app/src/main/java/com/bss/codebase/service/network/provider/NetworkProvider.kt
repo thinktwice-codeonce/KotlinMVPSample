@@ -1,9 +1,10 @@
-package com.bss.codebase.service.network
+package com.bss.codebase.service.network.provider
 
 import android.content.Context
 import com.bss.codebase.service.common.RestMessageResponse
 import com.bss.codebase.service.network.filter.Filter
 import com.bss.codebase.service.network.filter.InterceptFilter
+import com.bss.codebase.service.network.intercepter.HttpLoggingInterceptor
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
 import rx.Observable
@@ -34,7 +35,7 @@ interface NetworkProvider {
 
      fun addNetworkInterceptor(interceptor: Interceptor): NetworkProvider
 
-     //fun getLevel(): HttpLoggingInterceptor.Level
+     fun getLevel(): HttpLoggingInterceptor.Level
 
      fun getTimeout(): Int
 

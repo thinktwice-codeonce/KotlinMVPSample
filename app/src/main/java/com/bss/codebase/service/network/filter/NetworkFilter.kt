@@ -2,7 +2,7 @@ package com.bss.codebase.service.network.filter
 
 import com.bss.codebase.exception.ApiThrowable
 import com.bss.codebase.exception.ErrorCodes
-import com.bss.codebase.service.network.NetworkProvider
+import com.bss.codebase.service.network.provider.NetworkProvider
 import rx.Observable
 
 class NetworkFilter<T> : Filter<Throwable, Observable<T>> {
