@@ -41,7 +41,7 @@ class RxScheduler {
         /**
          * On Stop with subscription
          */
-        fun onStop(subscription: Subscription) {
+        fun onStop(subscription: Subscription?) {
             if (subscription != null && !subscription.isUnsubscribed) {
                 subscription.unsubscribe()
             }

@@ -17,7 +17,7 @@ abstract class BaseNetworkProvider(private val context: Context): NetworkProvide
     override fun getTimeout(): Int = 120
 
     override fun getLevel(): HttpLoggingInterceptor.Level {
-        return HttpLoggingInterceptor.Level.BASIC
+        return HttpLoggingInterceptor.Level.BODY
     }
 
     override fun isNetworkAvailable(): Boolean {
@@ -34,11 +34,11 @@ abstract class BaseNetworkProvider(private val context: Context): NetworkProvide
             .flatMap (Observable<TResponse>::just)
     }
 
-    override fun <TResponse> getRootFilter(): Filter<TResponse, Observable<TResponse>> {
-        TODO("not implemented")
+    override fun <TResponse> getRootFilter(): Filter<TResponse, Observable<TResponse>>? {
+        return null
     }
 
-    override fun <TResponse> getCommonFilter(): Filter<TResponse, Observable<TResponse>> {
-        TODO("not implemented")
+    override fun <TResponse> getCommonFilter(): Filter<TResponse, Observable<TResponse>>? {
+        return null
     }
 }

@@ -7,7 +7,7 @@ import com.bss.codebase.service.common.MessageResponse
 import com.bss.codebase.service.common.RestMessageResponse
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import retrofit2.adapter.rxjava.HttpException
+import retrofit2.HttpException
 import rx.Observable
 import java.util.ArrayList
 
@@ -48,9 +48,8 @@ class ApiThrowableFilter<T> : Filter<Throwable, Observable<T>> {
     override fun execute(throwable: Throwable): Observable<T> {
 
         if (throwable is HttpException) {
-            val httpException = throwable as retrofit2.HttpException
-            val failedResponse = httpException.response().errorBody()
-            val responseCode = httpException.response().code()
+            val failedResponse = throwable.response().errorBody()
+            val responseCode = throwable.response().code()
 
             if (failedResponse == null) {
                 return Observable.error(

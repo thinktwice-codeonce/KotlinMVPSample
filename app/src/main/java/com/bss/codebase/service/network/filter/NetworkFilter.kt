@@ -5,13 +5,9 @@ import com.bss.codebase.exception.ErrorCodes
 import com.bss.codebase.service.network.provider.NetworkProvider
 import rx.Observable
 
-class NetworkFilter<T> : Filter<Throwable, Observable<T>> {
+class NetworkFilter<T>(networkProvider: NetworkProvider) : Filter<Throwable, Observable<T>> {
 
-    protected var networkProvider: NetworkProvider? = null
-
-    constructor(networkProvider: NetworkProvider){
-        this.networkProvider = networkProvider
-    }
+    protected var networkProvider: NetworkProvider? = networkProvider
 
     override fun execute(throwable: Throwable): Observable<T> {
         return if (!networkProvider!!.isNetworkAvailable()) {

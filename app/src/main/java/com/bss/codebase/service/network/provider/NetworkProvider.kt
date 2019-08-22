@@ -55,7 +55,7 @@ interface NetworkProvider {
 
      fun <TResponse> verifyResponse(call: Observable<TResponse>, enableFilter: Boolean): Observable<TResponse>
 
-     fun <TResponse> getRootFilter(): Filter<TResponse, Observable<TResponse>>
+     fun <TResponse> getRootFilter(): Filter<TResponse, Observable<TResponse>>?
 
-     fun <TResponse> getCommonFilter(): Filter<TResponse, Observable<TResponse>>
+     fun <TResponse> getCommonFilter(): Filter<TResponse, Observable<TResponse>>?
 }
