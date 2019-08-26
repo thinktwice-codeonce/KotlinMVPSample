@@ -7,6 +7,7 @@ import rx.functions.Action0
 import rx.functions.Action1
 import rx.schedulers.Schedulers
 
+@Suppress("NAME_SHADOWING")
 class RxScheduler {
 
     companion object {
