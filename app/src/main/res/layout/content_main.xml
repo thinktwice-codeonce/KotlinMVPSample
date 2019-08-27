@@ -8,6 +8,6 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/app_bar_main"
         android:background="#abcabc"
-        tools:context=".MainActivity">
+        tools:context=".app.domain.main.MainActivity">
 
 </android.support.constraint.ConstraintLayout>

@@ -31,7 +31,7 @@ abstract class BaseNetworkProvider(private val context: Context): NetworkProvide
         return call
             .observeOn(Schedulers.computation())
             .onExceptionResumeNext(Observable.empty())
-            .flatMap (Observable<TResponse>::just)
+            .flatMap { Observable.just(it) }
     }
 
     override fun <TResponse> getRootFilter(): Filter<TResponse, Observable<TResponse>>? {
