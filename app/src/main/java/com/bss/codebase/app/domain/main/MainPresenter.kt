@@ -7,10 +7,8 @@ import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter
 import javax.inject.Inject
 
 
-class MainPresenter: MvpBasePresenter<MainView>() {
-
-    @Inject
-    lateinit var authenticationService: AuthenticationService
+class MainPresenter @Inject constructor(private val authenticationService: AuthenticationService)
+    : MvpBasePresenter<MainView>() {
 
     fun getPosts() {
         authenticationService.getPosts()

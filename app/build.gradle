@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: "kotlin-allopen"
+
 import org.ajoberstar.grgit.Grgit
 
 ext {
@@ -30,6 +32,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    allOpen {
+        annotation("org.androidannotations.api.KotlinOpen")
     }
 }
 
@@ -97,6 +103,7 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:${cafVersion.buildGradle}"
         classpath "org.ajoberstar:grgit:${cafVersion.grgit}"
+        classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version"
     }
 }
 
@@ -142,4 +149,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation 'com.hannesdorfmann.mosby3:mvp:3.1.1'
+
+    def AAVersion = "4.6.0"
+    kapt "org.androidannotations:androidannotations:$AAVersion"
+    implementation "org.androidannotations:androidannotations-api:$AAVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

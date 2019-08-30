@@ -3,6 +3,7 @@
           xmlns:tools="http://schemas.android.com/tools" package="com.bss.codebase">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
             android:name="com.bss.codebase.app.domain.application.MainApplication"
@@ -13,7 +14,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme" tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
-                android:name="com.bss.codebase.app.domain.main.MainActivity"
+                android:name="com.bss.codebase.app.domain.main.MainActivity_"
                 android:label="@string/app_name"
                 android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

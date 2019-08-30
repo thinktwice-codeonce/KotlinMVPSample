@@ -23,7 +23,7 @@ class ApplicationModule(val context: Context) {
     @Provides
     @ApplicationScope
     fun provideAuthenticationService(networkProvider: NetworkProvider): AuthenticationService {
-        val restAuthenticationService = networkProvider.provideApi("", RestAuthenticationService::class.java)
+        val restAuthenticationService = networkProvider.provideApi("https://jsonplaceholder.typicode.com/", RestAuthenticationService::class.java)
         return DefaultAuthenticationService(networkProvider, restAuthenticationService)
     }
 }

@@ -1,6 +1,6 @@
 package com.bss.codebase.app.domain.main
 
-import android.os.Bundle
+import android.annotation.SuppressLint
 import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
@@ -8,25 +8,43 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.view.Menu
 import android.view.MenuItem
 import com.bss.codebase.R
+import com.bss.codebase.app.domain.module.ApplicationModule
 import com.bss.codebase.app.domain.module.DaggerApplicationComponent
 import com.hannesdorfmann.mosby3.mvp.MvpActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import org.androidannotations.annotations.AfterInject
+import org.androidannotations.annotations.AfterViews
+import org.androidannotations.annotations.EActivity
+import javax.inject.Inject
 
-class MainActivity : MvpActivity<MainView, MainPresenter>(), NavigationView.OnNavigationItemSelectedListener {
+@SuppressLint("Registered")
+@EActivity(R.layout.activity_main)
+class MainActivity : MvpActivity<MainView, MainPresenter>(), NavigationView.OnNavigationItemSelectedListener, MainView {
+
+    @Inject
+    lateinit var mainPresenter: MainPresenter
 
     override fun createPresenter(): MainPresenter {
-        return MainPresenter()
+        return mainPresenter
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
+    @AfterInject
+    fun afterInject() {
+        inject
+    }
 
+    val inject: Unit by lazy {
         DaggerApplicationComponent.builder()
+            .applicationModule(ApplicationModule(application))
             .build()
             .injectMain(this)
+    }
+
+    @AfterViews
+    fun afterView() {
+
+        setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -43,7 +61,7 @@ class MainActivity : MvpActivity<MainView, MainPresenter>(), NavigationView.OnNa
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        getPresenter().getPosts()
+        mainPresenter.getPosts()
     }
 
     override fun onBackPressed() {
