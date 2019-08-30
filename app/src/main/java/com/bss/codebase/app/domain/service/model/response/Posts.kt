@@ -1,4 +1,4 @@
-package com.bss.codebase.app.domain.service.model
+package com.bss.codebase.app.domain.service.model.response
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
