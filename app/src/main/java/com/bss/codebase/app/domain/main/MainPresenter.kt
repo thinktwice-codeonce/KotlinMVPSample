@@ -1,6 +1,6 @@
 package com.bss.codebase.app.domain.main
 
-import com.bss.codebase.app.domain.service.posts.PostsService
+import com.bss.codebase.app.service.posts.PostsService
 import com.bss.codebase.service.schedule.RxScheduler
 import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter
 import javax.inject.Inject

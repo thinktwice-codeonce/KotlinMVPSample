@@ -1,4 +1,4 @@
-package com.bss.codebase.app.domain.service.authentication
+package com.bss.codebase.app.service.authentication
 
 import com.bss.codebase.service.network.provider.NetworkProvider
 

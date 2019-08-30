@@ -1,4 +1,4 @@
-package com.bss.codebase.app.domain.util
+package com.bss.codebase.app.util
 
 class ApiUrls {
     companion object {

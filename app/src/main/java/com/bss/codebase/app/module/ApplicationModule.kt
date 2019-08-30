@@ -1,14 +1,14 @@
-package com.bss.codebase.app.domain.module
+package com.bss.codebase.app.module
 
 import android.content.Context
 import com.bss.codebase.BuildConfig
-import com.bss.codebase.app.domain.service.authentication.AuthenticationService
-import com.bss.codebase.app.domain.service.authentication.DefaultAuthenticationService
-import com.bss.codebase.app.domain.service.authentication.RestAuthenticationService
-import com.bss.codebase.app.domain.service.posts.DefaultPostsService
-import com.bss.codebase.app.domain.service.posts.PostsService
-import com.bss.codebase.app.domain.service.posts.RestPostsService
-import com.bss.codebase.app.domain.util.ApiUrls
+import com.bss.codebase.app.service.authentication.AuthenticationService
+import com.bss.codebase.app.service.authentication.DefaultAuthenticationService
+import com.bss.codebase.app.service.authentication.RestAuthenticationService
+import com.bss.codebase.app.service.posts.DefaultPostsService
+import com.bss.codebase.app.service.posts.PostsService
+import com.bss.codebase.app.service.posts.RestPostsService
+import com.bss.codebase.app.util.ApiUrls
 import com.bss.codebase.infrastructure.scope.ApplicationScope
 import com.bss.codebase.service.network.provider.DefaultNetworkProvider
 import com.bss.codebase.service.network.provider.NetworkProvider

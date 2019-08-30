@@ -1,4 +1,4 @@
-package com.bss.codebase.app.domain.service.model.response
+package com.bss.codebase.app.service.model.response
 
 import com.bss.codebase.service.authentication.model.LoginResponse
 import com.google.gson.annotations.SerializedName

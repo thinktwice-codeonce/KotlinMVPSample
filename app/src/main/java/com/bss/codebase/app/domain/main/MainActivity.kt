@@ -3,9 +3,9 @@ package com.bss.codebase.app.domain.main
 import android.annotation.SuppressLint
 import android.widget.Toast
 import com.bss.codebase.R
-import com.bss.codebase.app.domain.module.ApplicationModule
-import com.bss.codebase.app.domain.module.DaggerApplicationComponent
-import com.bss.codebase.app.domain.service.model.response.Posts
+import com.bss.codebase.app.module.ApplicationModule
+import com.bss.codebase.app.module.DaggerApplicationComponent
+import com.bss.codebase.app.service.model.response.Posts
 import com.hannesdorfmann.mosby3.mvp.MvpActivity
 import org.androidannotations.annotations.AfterInject
 import org.androidannotations.annotations.AfterViews

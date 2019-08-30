@@ -1,4 +1,4 @@
-package com.bss.codebase.app.domain.module
+package com.bss.codebase.app.module
 
 import com.bss.codebase.app.domain.main.MainActivity
 import com.bss.codebase.infrastructure.scope.ApplicationScope

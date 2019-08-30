@@ -1,6 +1,6 @@
-package com.bss.codebase.app.domain.service.posts
+package com.bss.codebase.app.service.posts
 
-import com.bss.codebase.app.domain.service.model.response.Posts
+import com.bss.codebase.app.service.model.response.Posts
 import retrofit2.http.GET
 import rx.Observable
 

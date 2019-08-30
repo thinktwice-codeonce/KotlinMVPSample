@@ -1,6 +1,6 @@
 package com.bss.codebase.app.domain.main
 
-import com.bss.codebase.app.domain.service.model.response.Posts
+import com.bss.codebase.app.service.model.response.Posts
 import com.hannesdorfmann.mosby3.mvp.MvpView
 
 interface MainView: MvpView {
