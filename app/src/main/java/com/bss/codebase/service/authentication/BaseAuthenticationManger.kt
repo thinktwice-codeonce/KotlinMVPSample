@@ -11,7 +11,7 @@ abstract class BaseAuthenticationManger<
         TUser : LoginResponse,
         TLoginRequest : LoginRequest,
         TLoginSocialRequest : LoginSocialRequest>(
-    var configuration: AuthenticationManagerConfiguration
+    val configuration: AuthenticationManagerConfiguration
 ) : AuthenticationManager<TUser, TLoginRequest, TLoginSocialRequest> {
 
     protected lateinit var user: TUser

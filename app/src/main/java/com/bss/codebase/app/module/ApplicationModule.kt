@@ -10,6 +10,7 @@ import com.bss.codebase.app.service.posts.PostsService
 import com.bss.codebase.app.service.posts.RestPostsService
 import com.bss.codebase.app.util.ApiUrls
 import com.bss.codebase.infrastructure.scope.ApplicationScope
+import com.bss.codebase.service.authentication.AuthenticationManagerConfiguration
 import com.bss.codebase.service.network.provider.DefaultNetworkProvider
 import com.bss.codebase.service.network.provider.NetworkProvider
 import dagger.Module
@@ -27,8 +28,11 @@ class ApplicationModule(val context: Context) {
     @Provides
     @ApplicationScope
     fun provideAuthenticationService(networkProvider: NetworkProvider): AuthenticationService {
-        return DefaultAuthenticationService(networkProvider,
-            networkProvider.provideApi(ApiUrls.BASE_URL, RestAuthenticationService::class.java))
+        return DefaultAuthenticationService(
+            networkProvider,
+            networkProvider.provideApi(ApiUrls.BASE_URL, RestAuthenticationService::class.java),
+            AuthenticationManagerConfiguration()
+        )
     }
 
     @Provides
