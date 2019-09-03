@@ -12,27 +12,26 @@ import rx.Observable
 import java.util.ArrayList
 
 
+@Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE", "SpellCheckingInspection")
 class ApiThrowableFilter<T> : Filter<Throwable, Observable<T>> {
 
-    fun onHandleFailedResponse(responseCode: Int, rawString: String): ApiThrowable {
+    private fun onHandleFailedResponse(responseCode: Int, rawString: String): ApiThrowable {
         var exception: ApiThrowable
         try {
             val gson = Gson()
             val collectionType = object : TypeToken<RestMessageResponse<T>>() {}.type
             val responseMessage = gson.fromJson<RestMessageResponse<T>>(rawString, collectionType)
-
             val errors = responseMessage.getErrors()
-            if (errors == null || errors!!.size == 0) {
-                try {
+            if (errors.isEmpty()) {
+                exception = try {
                     val messageResponse = gson.fromJson<MessageResponse>(rawString, MessageResponse::class.java)
-                    exception = ApiThrowable.from(responseCode, messageResponse.getMessage()!!)
+                    ApiThrowable.from(responseCode, messageResponse.getMessage()!!)
                 } catch (ex: Exception) {
-                    exception = ApiThrowable.from(responseCode, rawString)
+                    ApiThrowable.from(responseCode, rawString)
                 }
-
             } else {
-                var serviceResultErrors = ArrayList<ServiceResultError>()
-                for (error in errors!!) {
+                val serviceResultErrors = ArrayList<ServiceResultError>()
+                for (error in errors) {
                     serviceResultErrors.add(ServiceResultError(error.getErrorCode(), error.getErrorMessage()!!))
                 }
 
@@ -41,7 +40,6 @@ class ApiThrowableFilter<T> : Filter<Throwable, Observable<T>> {
         } catch (e: Exception) {
             exception = ApiThrowable.from(e)
         }
-
         return exception
     }
 
@@ -50,7 +48,6 @@ class ApiThrowableFilter<T> : Filter<Throwable, Observable<T>> {
         if (throwable is HttpException) {
             val failedResponse = throwable.response().errorBody()
             val responseCode = throwable.response().code()
-
             if (failedResponse == null) {
                 return Observable.error(
                     ApiThrowable.from(
@@ -60,14 +57,13 @@ class ApiThrowableFilter<T> : Filter<Throwable, Observable<T>> {
                 )
             } else {
                 var rawString = ""
-                try {
+                return try {
                     rawString = failedResponse.string()
-                    return Observable.error(onHandleFailedResponse(responseCode, rawString))
+                    Observable.error(onHandleFailedResponse(responseCode, rawString))
                 } catch (ex: Exception) {
-                    return Observable
+                    Observable
                         .error(ApiThrowable.from(ErrorCodes.GENERAL_ERROR, rawString, ex))
                 }
-
             }
         }
         return Observable.error(throwable)
