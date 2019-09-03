@@ -97,7 +97,7 @@ class DefaultNetworkProvider(context: Context, private val isDebug: Boolean) : B
                     addDefaultHeader()
                 }
                 for ((key, value) in headers) {
-                    requestBuilder.addHeader(key, value)
+                    requestBuilder.header(key, value)
                 }
                 chain.proceed(requestBuilder.build())
             }
