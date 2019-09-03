@@ -14,7 +14,7 @@ class DefaultAuthenticationService(val networkProvider: NetworkProvider,
 ): AuthenticationService,
     BaseAuthenticationManger<User, LoginInfo, LoginSocialRequest>(configuration) {
     override fun signIn(loginInfo: LoginInfo): Observable<User> {
-        return onLogin(loginInfo)
+        return login(loginInfo)
     }
 
     override fun onLogin(loginInfo: LoginInfo): Observable<User> {

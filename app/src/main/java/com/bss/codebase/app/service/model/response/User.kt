@@ -2,8 +2,9 @@ package com.bss.codebase.app.service.model.response
 
 import com.bss.codebase.service.authentication.model.LoginResponse
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
-class User: LoginResponse {
+class User: LoginResponse, Serializable {
 
     @SerializedName("username")
     var userName: String = ""

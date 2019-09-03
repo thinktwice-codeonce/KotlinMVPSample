@@ -41,6 +41,8 @@ class MainActivity : MvpActivity<MainView, MainPresenter>(), MainView {
     @Click(R.id.btnGetPosts)
     protected fun clickGetPosts() {
         mainPresenter.getPosts()
+
+        mainPresenter.signIn(LoginInfo())
     }
 
     override fun onSignInSuccessful(user: User) {
