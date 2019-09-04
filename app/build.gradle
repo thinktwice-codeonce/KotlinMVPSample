@@ -70,4 +70,9 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:2.13"
     implementation "com.google.dagger:dagger:2.13"
     compileOnly "javax.annotation:jsr250-api:1.0"
+
+    def AAVersion = "4.6.0"
+    kapt "org.androidannotations:androidannotations:$AAVersion"
+    implementation "org.androidannotations:androidannotations-api:$AAVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
