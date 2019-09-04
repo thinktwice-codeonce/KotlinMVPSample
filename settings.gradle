@@ -1,1 +1,2 @@
-include ':app'
+include ':app', ':codebase'
+project(':codebase').projectDir = new File('libs/codebase/app')

@@ -1,0 +1,3 @@
+[submodule "libs/codebase"]
+	path = libs/codebase
+	url = https://github.com/thinktwice-codeonce/kotlin_codebase_mvp.git
